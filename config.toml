@@ -1,0 +1,10 @@
+# Pipeline settings shared by every video.
+
+# Voice used for narration:
+#   "placeholder" -> gTTS robot voice, for drafts and previews
+#   "recorder"    -> record each narration line yourself through the mic
+voice = "placeholder"
+
+# Language/accent for the placeholder voice.
+gtts_lang = "en"
+gtts_tld = "com"

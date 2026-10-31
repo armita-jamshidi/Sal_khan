@@ -1,0 +1,5 @@
+manim>=0.18,<0.23
+manim-voiceover[gtts,recorder]>=0.3.7
+pytest>=8.0
+google-api-python-client>=2.100
+google-auth-oauthlib>=1.2

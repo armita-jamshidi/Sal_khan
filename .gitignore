@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Manim / render output
+media/
+build/
+*.mp4
+*.mov
+*.gif
+!docs/*.gif
+
+# Voiceover cache (placeholder TTS and mic recordings)
+voiceovers/
+**/media/voiceovers/
+
+# Secrets (YouTube OAuth)
+client_secret*.json
+token*.json
+.env
+
+# OS
+.DS_Store
+Thumbs.db
