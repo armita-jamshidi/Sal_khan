@@ -3,7 +3,8 @@
     python -m pipeline.render 01 --quality low     # preview
     python -m pipeline.render 01 --quality final   # 1080p60
 
-Scene order comes from the SCENES list in videos/NN-slug/scenes.py.
+Scene order comes from the SCENES list in videos/NN-slug/scenes.py. Writes the
+mp4 and a matching .srt caption file to build/NN-slug/<quality>/.
 """
 
 from __future__ import annotations
@@ -15,7 +16,9 @@ import subprocess
 import sys
 from pathlib import Path
 
-from common.config import REPO_ROOT
+from common.audio import level_video
+from common.captions import stitch_captions
+from common.config import REPO_ROOT, load_config
 
 QUALITY_FLAGS = {
     "low": ["-ql"],                    # 480p15, fast
@@ -59,13 +62,18 @@ def render(video_dir: Path, quality: str) -> Path:
 
     concat_list = out_dir / "clips.txt"
     concat_list.write_text("".join(f"file '{c}'\n" for c in clips))
-    output = out_dir / f"{video_dir.name}-{quality}.mp4"
+    stitched = out_dir / "stitched.mp4"
     subprocess.run(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0",
-         "-i", str(concat_list), "-c", "copy", str(output)],
+         "-i", str(concat_list), "-c", "copy", str(stitched)],
         check=True,
     )
-    print(f"Wrote {output}")
+    output = out_dir / f"{video_dir.name}-{quality}.mp4"
+    level_video(stitched, output, load_config().get("final_lufs", -14))
+    stitched.unlink()
+    captions = output.with_suffix(".srt")
+    stitch_captions(clips, captions)
+    print(f"Wrote {output}\nWrote {captions}")
     return output
 
 

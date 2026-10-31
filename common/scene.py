@@ -11,20 +11,7 @@ from manim_voiceover import VoiceoverScene
 from . import style
 from .config import load_config
 from .narration import load_narration
-
-
-def make_speech_service(voice: str, cache_dir: Path):
-    """The single switch between the robot placeholder voice and your mic."""
-    settings = load_config()
-    if voice == "placeholder":
-        from manim_voiceover.services.gtts import GTTSService
-
-        return GTTSService(lang=settings["gtts_lang"], tld=settings["gtts_tld"], cache_dir=str(cache_dir))
-    if voice == "recorder":
-        from manim_voiceover.services.recorder import RecorderService
-
-        return RecorderService(cache_dir=str(cache_dir))
-    raise ValueError(f"unknown voice mode {voice!r}")
+from .voices import make_speech_service
 
 
 class ChannelScene(VoiceoverScene):
@@ -41,8 +28,9 @@ class ChannelScene(VoiceoverScene):
         manim_config.background_color = style.BACKGROUND
         self.camera.background_color = style.BACKGROUND
         video_dir = Path(inspect.getfile(type(self))).resolve().parent
-        voice = load_config()["voice"]
-        self.set_speech_service(make_speech_service(voice, video_dir / "voiceovers" / voice))
+        settings = load_config()
+        voice = settings["voice"]
+        self.set_speech_service(make_speech_service(voice, video_dir / "voiceovers" / voice, settings))
         narration_file = video_dir / "narration.md"
         self.lines = load_narration(narration_file).get(self.scene_id, []) if narration_file.exists() else []
 

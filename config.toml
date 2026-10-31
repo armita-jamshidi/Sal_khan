@@ -1,10 +1,26 @@
 # Pipeline settings shared by every video.
 
 # Voice used for narration:
-#   "placeholder" -> gTTS robot voice, for drafts and previews
+#   "placeholder" -> robot voice, for drafts and previews
 #   "recorder"    -> record each narration line yourself through the mic
 voice = "placeholder"
 
 # Language/accent for the placeholder voice.
 gtts_lang = "en"
 gtts_tld = "com"
+
+# Which robot voice "placeholder" uses:
+#   "auto"    -> gTTS, falling back to the offline voice if Google can't be reached
+#   "gtts"    -> gTTS only (fail if offline)
+#   "offline" -> espeak-ng (Linux) or `say` (macOS), no network needed
+placeholder_engine = "auto"
+
+# Microphone for "recorder" mode. Run `make mics` to list them, then uncomment
+# and set the number. Left unset, you're asked to pick one at the start of each scene.
+# recorder_device = 0
+
+# Loudness, in LUFS (see common/audio.py). Each recorded line is leveled to
+# take_lufs when you accept it; the finished video is mixed to final_lufs,
+# which is what YouTube plays back at.
+take_lufs = -16
+final_lufs = -14
