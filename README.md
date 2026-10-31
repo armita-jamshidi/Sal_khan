@@ -60,6 +60,10 @@ render with realistic timing. `placeholder_engine` in `config.toml` pins one eng
 `make voice-check` renders a 15-second clip with two narration lines. Run it with
 `VOICE=recorder` to test your mic before recording a real video.
 
+To record a video's narration, see [docs/recording.md](docs/recording.md). In short:
+`make record VIDEO=01` to record, `make takes VIDEO=01` to see what's done, and
+`make redo VIDEO=01 SCENE=hook LINE=1` to redo one line.
+
 ## Rendering
 
 ```bash

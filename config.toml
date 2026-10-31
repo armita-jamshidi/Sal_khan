@@ -14,3 +14,7 @@ gtts_tld = "com"
 #   "gtts"    -> gTTS only (fail if offline)
 #   "offline" -> espeak-ng (Linux) or `say` (macOS), no network needed
 placeholder_engine = "auto"
+
+# Microphone for "recorder" mode. Run `make mics` to list them, then uncomment
+# and set the number. Left unset, you're asked to pick one at the start of each scene.
+# recorder_device = 0

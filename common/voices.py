@@ -118,5 +118,6 @@ def make_speech_service(voice: str, cache_dir: Path, settings: dict):
     if voice == "recorder":
         from manim_voiceover.services.recorder import RecorderService
 
-        return RecorderService(cache_dir=str(cache_dir))
+        # Without a device number, manim-voiceover asks which mic to use for every scene.
+        return RecorderService(device_index=settings.get("recorder_device"), cache_dir=str(cache_dir))
     raise ValueError(f"unknown voice mode {voice!r}")
