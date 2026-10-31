@@ -10,4 +10,4 @@ Deferred acceptance (Gale-Shapley) with program capacities.
 | `narration.md` | Script, one `## scene_id` block per scene |
 | `scenes.py` | Manim scenes that replay the event log |
 
-Status: scaffold only. Algorithm and tests come next.
+Status: algorithm done. Tests and example data come next.
