@@ -15,8 +15,8 @@ Anything not confirmed here is marked `TODO-VERIFY` in `narration.md`.
 | 8 | Couples could match together starting in 1984. | Confirmed (one secondary source) | [Becker's Hospital Review, "Match Day: Then & now"](https://www.beckershospitalreview.com/?p=56695) |
 | 9 | With couples, a stable matching isn't guaranteed to exist, but in practice the algorithm finds one. | Confirmed | Wikipedia: NRMP (couples make it NP-complete; "always terminated quickly on a stable solution" in testing) |
 | 10 | Roth and Shapley won the 2012 Nobel Memorial Prize in Economic Sciences "for the theory of stable allocations and the practice of market design." | Confirmed | [Nobel Prize press release, 2012](https://www.nobelprize.org/prizes/economic-sciences/2012/press-release/) |
-| 11 | David Gale died in 2008, so he could not share the prize (it isn't awarded posthumously). | Likely, not checked against a primary source | `TODO-VERIFY` |
-| 12 | The 2025 Match: 52,498 registered applicants and 43,237 positions, the largest Match ever. Results released at noon Eastern on March 21, 2025. | Confirmed | [NRMP press release, March 2025](https://www.nrmp.org/about/news/2025/03/national-resident-matching-program-releases-the-2025-main-residency-match-results-celebrates-the-next-generation-of-physicians/) |
+| 11 | David Gale died in 2008, so he could not share the prize. | Not checked. The narration doesn't use it. | `TODO-VERIFY` before adding it |
+| 12 | The 2026 Match: 53,373 registered applicants and 44,344 positions, the largest Match ever. Results released at noon Eastern on March 20, 2026. (2025: 52,498 and 43,237.) | Confirmed | [NRMP press release, March 2026](https://www.nrmp.org/about/news/2026/03/nrmp-releases-results-of-the-2026-main-residency-match-for-more-than-38000-future-residents/); [NRMP press release, March 2025](https://www.nrmp.org/about/news/2025/03/national-resident-matching-program-releases-the-2025-main-residency-match-results-celebrates-the-next-generation-of-physicians/) |
 | 13 | Students learn their match at the same moment, noon Eastern on Match Day. Many schools hand out envelopes at a ceremony. | Confirmed (noon ET); envelopes are a school tradition, not universal | NRMP press release; Becker's |
 | 14 | In the applicant-proposing version, no applicant can do better by lying about their ranking. | Confirmed | Wikipedia: NRMP ("applicants cannot benefit by misreporting preferences") |
 
@@ -26,3 +26,4 @@ Anything not confirmed here is marked `TODO-VERIFY` in `narration.md`.
 - It says the 1998 switch had a small effect in practice. Roth's own studies found very few applicants would have matched differently.
   `TODO-VERIFY`: the exact share (often quoted as about 0.1%).
 - It never names the NRMP's logo or branding on screen. The name "NRMP" is said only as a fact.
+- The "side that waits gets its worst stable outcome" line is proven in the notes for one seat per program. With capacities it's a standard result for responsive preferences (Roth and Sotomayor, *Two-Sided Matching*, 1990), still marked `TODO-VERIFY` in the narration.

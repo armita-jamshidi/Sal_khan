@@ -36,8 +36,7 @@ flip settles ties." Ben wins the coin flip for Mercy, so Ana falls back to City:
 **Ben–Mercy, Ana–City, Cy–City, Dee–Lake.** The one blocking pair is
 **(Ana, Mercy)**: Ana would rather be at Mercy, and Mercy would rather have Ana
 than Ben.
-<!-- TODO-VERIFY: the algorithm thread is adding the naive matching to example.py.
-If it picks a different one, scene 3's lines change to match. -->
+This matching is `NAIVE_MATCHING` in `example.py`, and `blocking_pairs()` confirms the pair.
 
 ## Words used on screen
 
@@ -54,7 +53,7 @@ Each scene's `scene_id` is the `## heading` in `narration.md`.
 
 - **Question:** how does one computer decide where thousands of doctors go, fairly?
 - **On screen:** a grid of envelopes, one opens, then they all collapse into a box labeled "the algorithm". A short title card comes after the question.
-- **Facts:** noon Eastern on a Friday in March. The 2025 Match had about 52,000 applicants and 43,000 positions (`sources.md` #12, #13).
+- **Facts:** noon Eastern on a Friday in March. The 2026 Match had about 53,000 applicants and 44,000 positions (`sources.md` #12, #13).
 - **Takeaway:** the viewer will be able to run the algorithm by hand by the end.
 
 ### 2. The problem, `problem` (0:30–1:15, ~110 words)
@@ -111,12 +110,17 @@ five paragraphs, in this order:
 
 | Scene | Target | Draft |
 | --- | --- | --- |
-| hook | 75 | see `narration.md` |
-| problem | 110 | |
-| blocking_pair | 110 | |
-| algorithm | 300 | |
-| stability | 110 | |
-| who_proposes | 110 | |
-| real_world | 75 | |
-| outro | 45 | |
-| **Total** | **935 (~6:15)** | |
+| hook | 75 | 91 |
+| problem | 110 | 72 |
+| blocking_pair | 110 | 153 |
+| algorithm | 300 | 213 |
+| stability | 110 | 117 |
+| who_proposes | 110 | 143 |
+| real_world | 75 | 71 |
+| outro | 45 | 38 |
+| **Total** | **935 (~6:15)** | **898 (~6:00 of speech)** |
+
+The draft runs about 6:00 of speech. With the silent holds the pacing plan
+asks for (the split screen, the final reveal), the video lands around 6:20.
+The algorithm scene is short on words because the animation carries it; the
+blocking-pair and who-proposes scenes run long because they carry the history.
