@@ -200,4 +200,98 @@ come from `sources.md`; anything not confirmed there stays `TODO-VERIFY`.
 
 ## Packaging
 
-_Coming next: title options, thumbnail concept, description and tags._
+The title and thumbnail should promise the same thing the first 30 seconds
+deliver: a high-stakes moment and a "how does that even work?" question.
+Neither should repeat the other; the thumbnail shows the moment, the title asks
+the question.
+
+### Title options
+
+Keep it under about 60 characters so it isn't cut off on phones.
+
+| # | Title | Why |
+| --- | --- | --- |
+| 1 | **How the Residency Match Actually Works** | The working title, trimmed. Clear and searchable; "actually" promises the real mechanism. Recommended. |
+| 2 | One Algorithm Decides Where Every New Doctor Goes | Bigger stakes, more curiosity. Slightly less searchable. |
+| 3 | The Algorithm That Matches 40,000 Doctors a Year | A concrete number is a strong hook. `TODO-VERIFY`: 43,237 positions in 2025, so "40,000+" is safe. |
+| 4 | Why Med Students Can't Game the Match | Leads with the strategy-proof payoff. Good as a second-video or Shorts angle. |
+| 5 | Gale-Shapley Explained: The Residency Match | Best for search from CS students; weakest for a general audience. |
+
+Recommendation: title 1 at launch. If click-through is low after a week, swap
+to title 2 or 3 (YouTube's title A/B test feature can do this for you).
+
+### Thumbnail concepts
+
+All three use the channel palette from `common/style.py`, at most three words of
+text, and no faces, names or third-party logos.
+
+1. **The envelope (recommended).** A single envelope, half open, on the deep
+   azure background, with a glowing tangerine card sliding out that shows a
+   hospital icon and a big "?". Text: "WHO DECIDES?" It matches the first frame
+   of the video, so the click feels like it delivered.
+2. **The blocking pair.** The board from scene 3: four applicant icons, three
+   hospital icons, one red dashed line between an applicant and a hospital,
+   everything else dimmed. Text: "THIS BREAKS IT". More "nerdy", good for a CS
+   audience.
+3. **Two answers.** A split frame, same people on both sides, different lines
+   drawn, a big "≠" in the middle. Text: "WHO ASKS FIRST?" Teases the scene 6
+   twist.
+
+The thumbnail can be rendered from a Manim frame (`scene.renderer.get_frame()`
+or `manim -s`) so it uses the real board, then text added at 1280x720.
+
+### Description draft
+
+```
+At noon on Match Day, tens of thousands of medical students find out where
+they'll spend the next several years, all at the same moment. One algorithm
+decides it. Here's how it works, why it's fair, and why it matters who asks
+first.
+
+We build the deferred acceptance (Gale-Shapley) algorithm step by step on a
+tiny example, show why it can never leave a "blocking pair," and rerun it with
+hospitals proposing to get a different answer.
+
+Every animation in this video is driven by real, tested code:
+https://github.com/armita-jamshidi/Sal_khan
+
+Chapters
+0:00 Match Day
+0:30 The problem
+1:15 Why the obvious approach fails
+2:00 The algorithm, step by step
+4:00 Why it's stable
+4:45 Who proposes matters
+5:30 The real Match today
+6:00 Recap
+
+Sources
+Gale & Shapley, "College Admissions and the Stability of Marriage" (1962)
+Roth & Peranson, "The Redesign of the Matching Market for American
+Physicians" (1999)
+Roth, "The Origins, History, and Design of the Resident Match" (2003)
+NRMP 2025 Main Residency Match results
+2012 Nobel Memorial Prize in Economic Sciences press release
+```
+
+Chapter times are from the timeline above and must be updated from the final
+render. YouTube needs the first chapter at 0:00, at least three chapters, and
+each at least 10 seconds long; all of these do.
+
+### Tags
+
+Tags matter much less than the title and thumbnail, so keep it to about 15:
+
+```
+residency match, NRMP, match day, Gale-Shapley, stable matching,
+deferred acceptance, stable marriage problem, matching algorithm,
+algorithms explained, computer science, medical residency,
+market design, Alvin Roth, game theory, algorithm animation
+```
+
+### Shorts
+
+Two 30–45 second cuts can come straight from the main video and send viewers to
+it: the blocking pair reveal (1:15–2:00) and the side-by-side "who proposes"
+twist (4:45–5:30). They need a vertical reframe of the board, so they're a
+follow-up, not part of video 1.
