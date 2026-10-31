@@ -3,7 +3,8 @@
     python -m pipeline.render 01 --quality low     # preview
     python -m pipeline.render 01 --quality final   # 1080p60
 
-Scene order comes from the SCENES list in videos/NN-slug/scenes.py.
+Scene order comes from the SCENES list in videos/NN-slug/scenes.py. Writes the
+mp4 and a matching .srt caption file to build/NN-slug/<quality>/.
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ import sys
 from pathlib import Path
 
 from common.audio import level_video
+from common.captions import stitch_captions
 from common.config import REPO_ROOT, load_config
 
 QUALITY_FLAGS = {
@@ -69,7 +71,9 @@ def render(video_dir: Path, quality: str) -> Path:
     output = out_dir / f"{video_dir.name}-{quality}.mp4"
     level_video(stitched, output, load_config().get("final_lufs", -14))
     stitched.unlink()
-    print(f"Wrote {output}")
+    captions = output.with_suffix(".srt")
+    stitch_captions(clips, captions)
+    print(f"Wrote {output}\nWrote {captions}")
     return output
 
 
