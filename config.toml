@@ -1,10 +1,16 @@
 # Pipeline settings shared by every video.
 
 # Voice used for narration:
-#   "placeholder" -> gTTS robot voice, for drafts and previews
+#   "placeholder" -> robot voice, for drafts and previews
 #   "recorder"    -> record each narration line yourself through the mic
 voice = "placeholder"
 
 # Language/accent for the placeholder voice.
 gtts_lang = "en"
 gtts_tld = "com"
+
+# Which robot voice "placeholder" uses:
+#   "auto"    -> gTTS, falling back to the offline voice if Google can't be reached
+#   "gtts"    -> gTTS only (fail if offline)
+#   "offline" -> espeak-ng (Linux) or `say` (macOS), no network needed
+placeholder_engine = "auto"
