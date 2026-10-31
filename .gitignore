@@ -25,3 +25,9 @@ token*.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Class notes stay local (course material); only the folder skeleton is tracked
+notes/inbox/*
+notes/used/*
+!notes/inbox/.gitkeep
+!notes/used/.gitkeep
