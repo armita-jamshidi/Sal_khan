@@ -18,3 +18,9 @@ placeholder_engine = "auto"
 # Microphone for "recorder" mode. Run `make mics` to list them, then uncomment
 # and set the number. Left unset, you're asked to pick one at the start of each scene.
 # recorder_device = 0
+
+# Loudness, in LUFS (see common/audio.py). Each recorded line is leveled to
+# take_lufs when you accept it; the finished video is mixed to final_lufs,
+# which is what YouTube plays back at.
+take_lufs = -16
+final_lufs = -14

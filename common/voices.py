@@ -14,11 +14,14 @@ from __future__ import annotations
 import shutil
 import subprocess
 import tempfile
+import time
 from pathlib import Path
 
 from manim import logger
 from manim_voiceover.helper import remove_bookmarks
 from manim_voiceover.services.base import SpeechService, initialize_speech_service
+
+from .audio import level_audio_file
 
 PLACEHOLDER_ENGINES = ("auto", "gtts", "offline")
 
@@ -118,6 +121,25 @@ def make_speech_service(voice: str, cache_dir: Path, settings: dict):
     if voice == "recorder":
         from manim_voiceover.services.recorder import RecorderService
 
+        take_lufs = settings.get("take_lufs", -16)
+
+        class LeveledRecorderService(RecorderService):
+            """Levels each take once, right after you accept it. Cached takes are left alone."""
+
+            def generate_from_text(self, text, cache_dir=None, path=None, **kwargs):
+                started = time.time()
+                data = super().generate_from_text(text, cache_dir, path, **kwargs)
+                take = Path(cache_dir or self.cache_dir) / data["original_audio"]
+                if take.stat().st_mtime >= started:
+                    level_audio_file(take, take_lufs)
+                return data
+
         # Without a device number, manim-voiceover asks which mic to use for every scene.
-        return RecorderService(device_index=settings.get("recorder_device"), cache_dir=str(cache_dir))
+        # transcription_model=None skips Whisper, which is only needed for <bookmark> tags
+        # and would otherwise prompt to install PyTorch on the first take.
+        return LeveledRecorderService(
+            device_index=settings.get("recorder_device"),
+            transcription_model=None,
+            cache_dir=str(cache_dir),
+        )
     raise ValueError(f"unknown voice mode {voice!r}")

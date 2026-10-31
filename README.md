@@ -71,4 +71,6 @@ make preview VIDEO=01   # 480p15, fast
 make final VIDEO=01     # 1080p60, stitched with ffmpeg
 ```
 
-Output goes to `build/<video>/<quality>/`.
+Output goes to `build/<video>/<quality>/`. The stitched soundtrack is mixed to
+-14 LUFS, YouTube's playback level, and each recorded line is leveled to -16 LUFS
+when you accept it, so quiet and loud takes match. Both are set in `config.toml`.

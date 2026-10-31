@@ -15,7 +15,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-from common.config import REPO_ROOT
+from common.audio import level_video
+from common.config import REPO_ROOT, load_config
 
 QUALITY_FLAGS = {
     "low": ["-ql"],                    # 480p15, fast
@@ -59,12 +60,15 @@ def render(video_dir: Path, quality: str) -> Path:
 
     concat_list = out_dir / "clips.txt"
     concat_list.write_text("".join(f"file '{c}'\n" for c in clips))
-    output = out_dir / f"{video_dir.name}-{quality}.mp4"
+    stitched = out_dir / "stitched.mp4"
     subprocess.run(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0",
-         "-i", str(concat_list), "-c", "copy", str(output)],
+         "-i", str(concat_list), "-c", "copy", str(stitched)],
         check=True,
     )
+    output = out_dir / f"{video_dir.name}-{quality}.mp4"
+    level_video(stitched, output, load_config().get("final_lufs", -14))
+    stitched.unlink()
     print(f"Wrote {output}")
     return output
 
