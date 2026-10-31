@@ -5,18 +5,20 @@ Every scene imports from here so all videos look like the same channel.
 
 from manim import ManimColor
 
-# Background and text
-BACKGROUND = ManimColor("#0F1420")
-TEXT = ManimColor("#E8ECF4")
-TEXT_MUTED = ManimColor("#8A93A6")
-PANEL = ManimColor("#1B2232")
+# Palette: Atomic Tangerine FF6B35, Peach Glow F7C59F, Beige EFEFD0,
+# Steel Azure 004E89, Baltic Blue 1A659E. Background and gray are darkened
+# tints of the same family, and blocking red is the one off-palette color.
+BACKGROUND = ManimColor("#061A2E")  # deep Steel Azure
+TEXT = ManimColor("#EFEFD0")        # Beige
+TEXT_MUTED = ManimColor("#9AA3A0")
+PANEL = ManimColor("#004E89")       # Steel Azure
 
 # One accent color per algorithm state
-PROPOSING = ManimColor("#4C9AFF")  # blue: a proposal in flight
-HELD = ManimColor("#FFC940")       # yellow: tentatively held
-REJECTED = ManimColor("#5C6373")   # gray: rejected / bumped
-FINAL = ManimColor("#3DDC84")      # green: final match
-BLOCKING = ManimColor("#FF5C5C")   # red: blocking pair / instability
+PROPOSING = ManimColor("#3A8DDE")  # Baltic Blue, lifted so it reads on the dark background
+HELD = ManimColor("#F7C59F")       # Peach Glow: tentatively held
+REJECTED = ManimColor("#4A5560")   # gray: rejected / bumped
+FINAL = ManimColor("#FF6B35")      # Atomic Tangerine: final match
+BLOCKING = ManimColor("#E63946")   # red: blocking pair / instability
 
 STATE_COLORS = {
     "proposing": PROPOSING,
