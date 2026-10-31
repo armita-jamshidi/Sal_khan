@@ -213,7 +213,7 @@ Keep it under about 60 characters so it isn't cut off on phones.
 | --- | --- | --- |
 | 1 | **How the Residency Match Actually Works** | The working title, trimmed. Clear and searchable; "actually" promises the real mechanism. Recommended. |
 | 2 | One Algorithm Decides Where Every New Doctor Goes | Bigger stakes, more curiosity. Slightly less searchable. |
-| 3 | The Algorithm That Matches 40,000 Doctors a Year | A concrete number is a strong hook. `TODO-VERIFY`: 43,237 positions in 2025, so "40,000+" is safe. |
+| 3 | The Algorithm That Matches 40,000 Doctors a Year | A concrete number is a strong hook. `sources.md` has 43,237 positions in 2025, so "40,000" is a safe round-down. |
 | 4 | Why Med Students Can't Game the Match | Leads with the strategy-proof payoff. Good as a second-video or Shorts angle. |
 | 5 | Gale-Shapley Explained: The Residency Match | Best for search from CS students; weakest for a general audience. |
 
