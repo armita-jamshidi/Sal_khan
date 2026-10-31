@@ -39,7 +39,7 @@ will look ~10% short; that is expected.
 
 | Time | Beat | On screen |
 | --- | --- | --- |
-| 0:00–0:03 | Cold open, no title card. First line is the stakes: "At noon on one Friday in March, thousands of medical students open an envelope at the same moment." | Grid of envelopes appears all at once |
+| 0:00–0:03 | Cold open, no title card. First line is the stakes: "At noon on Match Day, tens of thousands of medical students find out, at the same moment, where they're going." | Grid of envelopes appears all at once |
 | 0:03–0:10 | "Inside is the city they'll live in for the next three to seven years." | One envelope opens; a hospital name lands |
 | 0:10–0:20 | The question: "One computer decided all of it. How do you do that fairly?" | Envelopes collapse into a single box labeled "the algorithm" |
 | 0:20–0:30 | Promise: "By the end of this video you'll be able to run it by hand." | Short channel title card (under 3 seconds) |
@@ -100,7 +100,7 @@ This closes the hook's loop ("fairly"), so say the word "fair" here on purpose.
 | --- | --- | --- |
 | 4:45–4:55 | New question: "What if the hospitals proposed instead?" | The board mirrors: arrows now point right to left |
 | 4:55–5:15 | Rerun, fast | Program-proposing run at 2x |
-| 5:15–5:30 | Side-by-side reveal plus the 1998 switch | Split screen of both matchings, differences highlighted |
+| 5:15–5:30 | Side-by-side reveal, the 1952 twist, then the 1998 switch | Split screen of both matchings, differences highlighted |
 
 The split screen is the second big reveal. Keep both results on screen long
 enough to compare (at least 5 seconds of hold with no narration over it).
@@ -121,7 +121,82 @@ screen elements.
 
 ## Notes for the script and visuals
 
-_Coming next: concrete suggestions for the script and visuals threads._
+These are suggestions for whoever writes `narration.md` and `scenes.py`. Facts
+come from `sources.md`; anything not confirmed there stays `TODO-VERIFY`.
+
+### Script
+
+1. **Open on a sentence, not a greeting.** No "Hi, welcome back." The first
+   words are the stakes. Suggested opener: "At noon on Match Day, tens of
+   thousands of medical students find out, at the same moment, where they'll
+   spend the next several years." Envelopes are a school tradition, not
+   universal, so say "many of them open an envelope" rather than "they all do".
+2. **Use the real numbers once, early.** "Over 52,000 applicants and about
+   43,000 positions in 2025" makes the problem feel big before the tiny example
+   makes it feel solvable. One number set is enough; more turns it into a
+   lecture.
+3. **Name the four applicants and say the names often.** "Ana proposes to City
+   General" is easier to follow than "applicant 1 proposes to program A". Pick
+   names that start with different letters and sound different when spoken.
+4. **Keep each paragraph to one or two sentences.** `common/narration.py` turns
+   each paragraph into one voiceover line, which is one recording take and one
+   animation sync point. Short paragraphs mean easier takes and tighter sync.
+5. **Turn every scene seam into a question.** End scenes 2, 3, 4 and 5 with the
+   question the next scene answers (see the timeline). The viewer stays to hear
+   the answer.
+6. **Say "fair" in the hook and again in scene 5.** That is the open loop. The
+   stability proof is the moment the video keeps its promise, so call back to
+   it out loud: "So that's what fair means here."
+7. **Save the best history fact for scene 6.** The 1952 Match was, in effect,
+   the hospital-proposing version, ten years before Gale and Shapley wrote it
+   down. Revealing that right after the side-by-side comparison ("so for 46
+   years, the hospitals were getting their best stable outcome") is the
+   strongest twist in the video. Then the 1998 switch lands as the fix.
+8. **Keep scene 3's history aside to two sentences.** Exploding offers that
+   shrank from about 10 days to under 12 hours is vivid; the full timeline
+   isn't needed.
+9. **Fast-forward lines summarize, they don't narrate.** During the 2x rounds,
+   one line like "a few more bumps, and everyone settles" is enough. Narrating
+   every event at 2x is where viewers tune out.
+10. **No "in this video we will..." agenda.** The promise in the hook ("you'll
+    be able to run it by hand") does that job in one line.
+11. **End fast.** The recap is three short bullets, then one forward-looking
+    line about the next video. No "thanks for watching, don't forget to...".
+
+### Visuals
+
+1. **First frame is the envelope grid**, already on screen at frame 0 with no
+   fade from black. YouTube's autoplay preview and the first second of the
+   video are the same frame, and a black frame reads as "nothing here".
+2. **One new thing every 4–8 seconds.** If a narration line runs longer than 8
+   seconds over a static board, add a small change: highlight the rank list
+   entry being read, pulse the icon being talked about, or nudge the camera.
+3. **Dim everything that isn't the subject.** When one proposal or one bump is
+   the focus, fade the other icons to about 40% opacity. It tells the eye where
+   to look, which matters more on phones.
+4. **The red blocking-pair flash is the only red in the first two minutes.**
+   Keep red reserved so it stays a shock. Same for the green final state: it
+   should not appear until 3:50.
+5. **Zoom on the first bump only.** The camera zoom in `AlgorithmScene` before
+   the first bump is the right pattern break. Don't repeat the zoom on later
+   bumps, or it stops feeling special.
+6. **Fast-forward badge plus speed.** The existing badge is good. Pair it with a
+   visibly faster `run_time` (about half the round-1 step time) so it reads as
+   fast without the badge.
+7. **Flashback style for scene 5.** Replaying the rejection from the event log
+   in a desaturated or slightly transparent style signals "this already
+   happened" without extra narration.
+8. **Mirror, don't rebuild, for scene 6.** Keep the same board and flip the
+   arrows to point right to left. Viewers already know the layout, so the only
+   new information is the direction, which makes the different result jump out.
+9. **Hold the split screen 5 seconds with no narration.** Silence over a
+   comparison is a pattern break of its own and gives the viewer time to spot
+   the difference before it's explained.
+10. **On-screen text stays at 6 words or fewer per card**, at `BODY_SIZE` or
+    larger, so it's readable on a phone without pausing.
+11. **No channel or presenter branding beyond the shared title card.** No
+    names, faces or third-party logos on screen; the NRMP is named in narration
+    only, as a fact.
 
 ## Packaging
 
